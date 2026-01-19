@@ -1,40 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { Flex, Text, Button } from '@radix-ui/themes'
+import { useContext } from 'react'
+import { Text } from '@radix-ui/themes'
+import { GameContext } from './contexts/GameContext.jsx'
+import { SCREEN } from './config/gamePhases.js'
+
+// Screens
+import MainMenu from './components/screens/MainMenu.jsx'
+import DeviceTypeSelect from './components/screens/DeviceTypeSelect.jsx'
+import GameModeSelect from './components/screens/GameModeSelect.jsx'
+import Lobby from './components/Lobby.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const ctx = useContext(GameContext)
+  if (!ctx) return <Text>Loading...</Text>
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <Flex direction="column" gap="2">
-        <Text>Hello from Radix Themes :)</Text>
-        <Button>Let's go</Button>
-      </Flex>
-    </>
-  )
+  const { state } = ctx
+
+  switch (state.currentScreen) {
+    case SCREEN.MAIN_MENU:
+      return <MainMenu />
+    case SCREEN.DEVICE_SELECT:
+      return <DeviceTypeSelect />
+    case SCREEN.MODE_SELECT:
+      return <GameModeSelect />
+    case SCREEN.LOBBY:
+      return <Lobby />
+    case SCREEN.GAME:
+      return <Text>Game screen - coming soon</Text>
+    default:
+      return <Text>Unknown screen</Text>
+  }
 }
 
 export default App
