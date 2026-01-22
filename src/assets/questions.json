@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "question": "Jakie jest twoje ulubione jedzenie?",
+    "impostor": "Jakiego jedzenia nienawidzisz?"
+  },
+  {
+    "id": 2,
+    "question": "Jakie jest twoje ulubione zwierzę?",
+    "impostor": "Jakiego zwierzęcia nienawidzisz?"
+  },
+  {
+    "id": 3,
+    "question": "Jakie jest twoje ulubione miasto?",
+    "impostor": "Jakiego miasta nienawidzisz?"
+  },
+  {
+    "id": 4,
+    "question": "Jaki jest twój ulubiony kolor?",
+    "impostor": "Jakiego koloru nienawidzisz?"
+  },
+  {
+    "id": 5,
+    "question": "Jaka jest twoja ulubiona pora roku?",
+    "impostor": "Jakiej pory roku nienawidzisz?"
+  }
+]

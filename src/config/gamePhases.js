@@ -22,7 +22,7 @@ export const GAME_MODE = {
 
 // Game phases (within an active game)
 export const GAME_PHASES = {
-  LOBBY: "lobby",
+  // LOBBY: "lobby",
   ASSIGNMENT: "assignment",
   GAME: "game",
   VOTING: "voting",

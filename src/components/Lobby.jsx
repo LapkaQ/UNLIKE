@@ -42,7 +42,12 @@ function Lobby() {
         ))}
       </Flex>
 
-      <Button onClick={() => dispatch({ type: 'SET_SCREEN', payload: 'game' })}>
+      <Button
+        onClick={() => {
+          dispatch({ type: 'SET_SCREEN', payload: 'game' })
+          dispatch({ type: 'SET_GAME_PHASE', payload: 'assignment' })
+        }}
+      >
         Start Game
       </Button>
     </Flex>

@@ -1,10 +1,16 @@
 import { createContext, useReducer } from 'react'
-import { SCREEN, DEVICE_TYPE, GAME_MODE } from '../config/gamePhases'
+import {
+  SCREEN,
+  DEVICE_TYPE,
+  GAME_MODE,
+  GAME_PHASES,
+} from '../config/gamePhases'
 export const GameContext = createContext(null)
 
 const initialState = {
   // Navigation
   currentScreen: SCREEN.MAIN_MENU,
+  currentGamePhase: null,
 
   // Settings
   selectedDeviceType: null,
@@ -29,6 +35,8 @@ function gameReducer(state, action) {
       return { ...state, players: action.payload }
     case 'ADD_PLAYER':
       return { ...state, players: [...state.players, action.payload] }
+    case 'SET_GAME_PHASE':
+      return { ...state, currentGamePhase: action.payload }
     case 'RESET':
       return initialState
     default:

@@ -8,6 +8,7 @@ import MainMenu from './components/screens/MainMenu.jsx'
 import DeviceTypeSelect from './components/screens/DeviceTypeSelect.jsx'
 import GameModeSelect from './components/screens/GameModeSelect.jsx'
 import Lobby from './components/Lobby.jsx'
+import Game from './components/Game.jsx'
 
 function App() {
   const ctx = useContext(GameContext)
@@ -25,7 +26,7 @@ function App() {
     case SCREEN.LOBBY:
       return <Lobby />
     case SCREEN.GAME:
-      return <Text>Game screen - coming soon</Text>
+      return <Game />
     default:
       return <Text>Unknown screen</Text>
   }
