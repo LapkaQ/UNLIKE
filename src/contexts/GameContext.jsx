@@ -1,11 +1,11 @@
-import { createContext, useReducer } from 'react'
+import { createContext, useReducer } from "react";
 import {
   SCREEN,
   DEVICE_TYPE,
   GAME_MODE,
   GAME_PHASES,
-} from '../config/gamePhases'
-export const GameContext = createContext(null)
+} from "../config/gamePhases";
+export const GameContext = createContext(null);
 
 const initialState = {
   // Navigation
@@ -18,38 +18,42 @@ const initialState = {
 
   // Game state
   players: [
-    { id: 1, name: 'Player 1' },
-    { id: 2, name: 'Player 2' },
+    { id: 1, name: "Player 1" },
+    { id: 2, name: "Player 2" },
   ],
-}
+  impostorsId: [],
+  currentQuestion: null,
+};
 
 function gameReducer(state, action) {
   switch (action.type) {
-    case 'SET_SCREEN':
-      return { ...state, currentScreen: action.payload }
-    case 'SET_DEVICE_TYPE':
-      return { ...state, selectedDeviceType: action.payload }
-    case 'SET_GAME_MODE':
-      return { ...state, selectedGameMode: action.payload }
-    case 'SET_PLAYERS':
-      return { ...state, players: action.payload }
-    case 'ADD_PLAYER':
-      return { ...state, players: [...state.players, action.payload] }
-    case 'SET_GAME_PHASE':
-      return { ...state, currentGamePhase: action.payload }
-    case 'RESET':
-      return initialState
+    case "SET_SCREEN":
+      return { ...state, currentScreen: action.payload };
+    case "SET_DEVICE_TYPE":
+      return { ...state, selectedDeviceType: action.payload };
+    case "SET_GAME_MODE":
+      return { ...state, selectedGameMode: action.payload };
+    case "SET_PLAYERS":
+      return { ...state, players: action.payload };
+    case "SET_CURRENT_QUESTION":
+      return { ...state, currentQuestion: action.payload };
+    case "ADD_PLAYER":
+      return { ...state, players: [...state.players, action.payload] };
+    case "SET_GAME_PHASE":
+      return { ...state, currentGamePhase: action.payload };
+    case "RESET":
+      return initialState;
     default:
-      return state
+      return state;
   }
 }
 
 export default function GameProvider({ children }) {
-  const [state, dispatch] = useReducer(gameReducer, initialState)
+  const [state, dispatch] = useReducer(gameReducer, initialState);
 
   return (
     <GameContext.Provider value={{ state, dispatch }}>
       {children}
     </GameContext.Provider>
-  )
+  );
 }
